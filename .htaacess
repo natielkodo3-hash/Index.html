@@ -1,2 +1,2 @@
-UPDATE wp_posts SET guid = replace(guid, 'www.orbitwhit.com.br','newurl.com'); 
-UPDATE wp_posts SET post_content = replace(post_content, 'orbitwhite.com.br', 'newurl.com');
+wp_posts SET guid = replace(guid, 'www.orbitwhit.com.br','newurl.com'); 
+wp_posts SET post_content = replace(post_content, 'orbitwhite.com.br', 'newurl.com');
