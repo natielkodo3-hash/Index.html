@@ -1,0 +1,212 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norbit White | Developer Junior</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --roxo-deep: #0a0414;
+            --roxo-vibrante: #8a2be2;
+            --roxo-neon: #bc13fe;
+            --branco: #ffffff;
+            --vidro: rgba(255, 255, 255, 0.03);
+            --borda-vidro: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--roxo-deep); color: var(--branco); overflow-x: hidden; }
+
+        /* Fundo Animado com Cometas */
+        .space-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at top right, #1a0b2e, #0a0414); }
+        .comet { position: absolute; width: 2px; height: 2px; background: #fff; opacity: 0; animation: shoot 6s linear infinite; }
+        .comet::after { content: ''; position: absolute; width: 120px; height: 1px; background: linear-gradient(90deg, #fff, transparent); }
+        @keyframes shoot {
+            0% { transform: translate(120vw, -10vh) rotate(-45deg); opacity: 1; }
+            100% { transform: translate(-20vw, 120vh) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Header */
+        header { padding: 1.5rem 8%; display: flex; justify-content: center; position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid var(--borda-vidro); }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; }
+        .logo span { color: var(--roxo-neon); text-shadow: 0 0 10px var(--roxo-neon); }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        
+        /* Nuvem Estilizada */
+        .junior-cloud-container { position: relative; margin-bottom: 2.5rem; animation: float 5s ease-in-out infinite; }
+        .junior-cloud {
+            background: #fff; color: #000; padding: 18px 40px; font-weight: 700; font-size: 1rem;
+            border-radius: 50px; position: relative; box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+        .junior-cloud::before { content: ''; position: absolute; background: #fff; width: 45px; height: 45px; border-radius: 50%; top: -20px; left: 15%; }
+        .junior-cloud::after { content: ''; position: absolute; background: #fff; width: 35px; height: 35px; border-radius: 50%; top: -12px; right: 20%; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .typing-container { font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; margin-bottom: 2rem; }
+        .typing-text { color: var(--branco); text-shadow: 0 0 20px rgba(188, 19, 254, 0.4); }
+
+        /* Marquee (Lista Passando) */
+        .companies { padding: 2.5rem 0; background: var(--vidro); border-y: 1px solid var(--borda-vidro); overflow: hidden; white-space: nowrap; margin-bottom: 4rem; }
+        .company-track { display: inline-block; animation: scroll 25s linear infinite; }
+        .company-name { display: inline-block; font-size: 1.2rem; font-weight: 500; color: rgba(255,255,255,0.5); margin: 0 40px; letter-spacing: 2px; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* SKILLS - Design Diferente */
+        .skills-section { padding: 4rem 8%; text-align: center; }
+        .skills-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 2rem; }
+        .skill-item { 
+            background: var(--vidro); border: 1px solid var(--borda-vidro); padding: 25px 45px; border-radius: 20px;
+            font-weight: 700; transition: 0.5s; backdrop-filter: blur(10px);
+        }
+        .skill-item:hover { 
+            background: rgba(188, 19, 254, 0.1); border-color: var(--roxo-neon);
+            transform: scale(1.05) translateY(-5px); box-shadow: 0 10px 40px rgba(188, 19, 254, 0.2);
+        }
+
+        /* PORTFÓLIO - Visual Moderno */
+        .portfolio { padding: 6rem 8%; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .project-card { 
+            background: var(--vidro); border: 1px solid var(--borda-vidro); border-radius: 30px;
+            padding: 3rem; transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .project-card:hover { border-color: var(--roxo-neon); background: rgba(255,255,255,0.05); }
+        .project-card h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--roxo-neon); }
+        .project-card p { opacity: 0.7; line-height: 1.6; margin-bottom: 1.5rem; }
+        .project-tag { font-size: 0.7rem; background: var(--roxo-vibrante); padding: 5px 15px; border-radius: 50px; text-transform: uppercase; font-weight: 700; }
+
+        /* CONTATOS ATUALIZADOS */
+        .contact-section { padding: 8rem 8%; text-align: center; background: radial-gradient(circle at bottom, #1a0b2e, #0a0414); }
+        .contact-btn-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 3rem; }
+        .contact-link { 
+            text-decoration: none; color: #fff; font-weight: 700; padding: 20px 45px; 
+            border-radius: 50px; transition: 0.4s; display: flex; align-items: center; gap: 10px;
+            border: 2px solid var(--borda-vidro);
+        }
+        .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border: none; }
+        .whatsapp { background: #25d366; color: #fff; border: none; }
+        .contact-link:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        footer { padding: 3rem; text-align: center; opacity: 0.4; font-size: 0.8rem; letter-spacing: 2px; }
+
+        @media (max-width: 768px) { .typing-container { font-size: 2.5rem; } .skill-item { width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <div class="space-background" id="space"></div>
+
+    <header>
+        <div class="logo">NORBIT<span>WHITE</span></div>
+    </header>
+
+    <section class="hero">
+        <div class="junior-cloud-container">
+            <div class="junior-cloud">DEVELOPER JUNIOR</div>
+        </div>
+        <div class="typing-container">
+            <span class="typing-text" id="typewriter"></span>
+        </div>
+        <p style="opacity: 0.6;">Especialista em criar o impossível com código.</p>
+    </section>
+
+    <div class="companies">
+        <div class="company-track">
+            <div class="company-name">VANGUARDA BRASIL</div>
+            <div class="company-name">BEGAMERS</div>
+            <div class="company-name">1SHOTKILL</div>
+            <div class="company-name">VANGUARDA BRASIL</div>
+            <div class="company-name">BEGAMERS</div>
+            <div class="company-name">1SHOTKILL</div>
+            <div class="company-name">VANGUARDA BRASIL</div>
+            <div class="company-name">BEGAMERS</div>
+            <div class="company-name">1SHOTKILL</div>
+        </div>
+    </div>
+
+    <section class="skills-section">
+        <h2 style="font-size: 2.5rem;">Especialidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-item">CRIEI BACKEND</div>
+            <div class="skill-item">CRIEI INTERFACE</div>
+            <div class="skill-item">CRIEI LAYOUT ÚNICO E RESPONSIVO</div>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <h2 style="text-align: center; margin-bottom: 4rem; font-size: 2.5rem;">Cases de Sucesso</h2>
+        <div class="portfolio-grid">
+            
+            <div class="project-card">
+                <span class="project-tag">Full Stack</span>
+                <h3>Vanguarda Brasil</h3>
+                <p>Otimização de sistemas e criação de interfaces de alta complexidade para a maior performance possível.</p>
+                <div style="height: 2px; width: 50px; background: var(--roxo-neon);"></div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-tag">Gaming UI</span>
+                <h3>BeGamers</h3>
+                <p>Uma experiência imersiva desenvolvida para o público gamer, unindo estética neon com funcionalidade robusta.</p>
+                <div style="height: 2px; width: 50px; background: var(--roxo-neon);"></div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-tag">Web App</span>
+                <h3>1ShotKill</h3>
+                <p>Plataforma estratégica com layout único e responsividade total para todos os dispositivos.</p>
+                <div style="height: 2px; width: 50px; background: var(--roxo-neon);"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2 style="font-size: 3rem;">Vamos Conversar?</h2>
+        <p style="margin-top: 10px; opacity: 0.7;">Clique abaixo para iniciar um projeto.</p>
+        
+        <div class="contact-btn-container">
+            <a href="https://wa.me/+5521983747028" target="_blank" class="contact-link whatsapp">
+                WHATSAPP
+            </a>
+            <a href="https://www.instagram.com/norbit.white" target="_blank" class="contact-link instagram">
+                INSTAGRAM
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        NORBIT WHITE &copy; 2024 | CODANDO NO ESPAÇO
+    </footer>
+
+    <script>
+        const textElement = document.getElementById('typewriter');
+        const phrases = ["Eu sou Programador.", "Norbit White.", "Eu crio Sites."];
+        let i = 0, j = 0, isDeleting = false;
+
+        function type() {
+            let current = phrases[i];
+            textElement.textContent = isDeleting ? current.substring(0, j - 1) : current.substring(0, j + 1);
+            j = isDeleting ? j - 1 : j + 1;
+            if (!isDeleting && j === current.length) setTimeout(() => isDeleting = true, 2000);
+            else if (isDeleting && j === 0) { isDeleting = false; i = (i + 1) % phrases.length; }
+            setTimeout(type, isDeleting ? 50 : 150);
+        }
+
+        const space = document.getElementById('space');
+        for (let k = 0; k < 15; k++) {
+            const comet = document.createElement('div');
+            comet.className = 'comet';
+            comet.style.left = Math.random() * 100 + 'vw';
+            comet.style.top = Math.random() * 50 + 'vh';
+            comet.style.animationDelay = Math.random() * 10 + 's';
+            comet.style.animationDuration = (4 + Math.random() * 4) + 's';
+            space.appendChild(comet);
+        }
+        type();
+    </script>
+</body>
+</html>
